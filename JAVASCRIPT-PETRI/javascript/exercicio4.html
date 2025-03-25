@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Operações Aritméticas</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Atividade04</h2>
+    <label for="num1">Número 1:</label>
+    <input type="number" id="num1">
+    <label for="num2">Número 2:</label>
+    <input type="number" id="num2">
+    <button onclick="calcular()">Calcular</button>
+    <table id="resultTable">
+        <thead>
+            <tr>
+                <th>Operação</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        function calcular() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+
+            const soma = num1 + num2;
+            const produto = num1 * num2;
+            const divisao = num1 / num2;
+            const resto = num1 % num2;
+
+            const resultados = [
+                { operacao: 'Soma', resultado: soma },
+                { operacao: 'Produto', resultado: produto },
+                { operacao: 'Divisão', resultado: divisao },
+                { operacao: 'Resto da Divisão', resultado: resto }
+            ];
+
+            const tbody = document.getElementById('resultTable').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+
+            resultados.forEach(item => {
+                const row = tbody.insertRow();
+                const cellOperacao = row.insertCell(0);
+                const cellResultado = row.insertCell(1);
+                cellOperacao.textContent = item.operacao;
+                cellResultado.textContent = item.resultado;
+            });
+        }
+    </script>
+</body>
+</html>

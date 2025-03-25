@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade06</title>
+</head>
+<body>
+    <h2>calculadora salarial</h2>
+    <label for="salario">Salário Atual:</label>
+    <input type="number" id="salario">
+    <button onclick="calcularReajuste()">Calcular Reajuste</button>
+    <div id="resultado"></div>
+
+    <script>
+        function calcularReajuste() {
+            const salario = parseFloat(document.getElementById('salario').value);
+            let percentualReajuste;
+
+            if (salario <= 280) {
+                percentualReajuste = 20;
+            } else if (salario <= 700) {
+                percentualReajuste = 15;
+            } else if (salario <= 1500) {
+                percentualReajuste = 10;
+            } else {
+                percentualReajuste = 5;
+            }
+
+            const novoSalario = salario + (salario * percentualReajuste / 100);
+
+            document.getElementById('resultado').innerHTML = `
+                <p>Salário Atual: R$ ${salario.toFixed(2)}</p>
+                <p>Percentual de Reajuste: ${percentualReajuste}%</p>
+                <p>Novo Salário: R$ ${novoSalario.toFixed(2)}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

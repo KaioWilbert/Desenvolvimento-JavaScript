@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade07</title>
+</head>
+<body>
+    <h2>data por extenso</h2>
+    <label for="data">Digite a data (dd/mm/aaaa):</label>
+    <input type="text" id="data">
+    <button onclick="escreverDataPorExtenso()">Escrever Data por Extenso</button>
+    <div id="resultado"></div>
+
+    <script>
+        function escreverDataPorExtenso() {
+            const data = document.getElementById('data').value;
+            const [dia, mes, ano] = data.split('/');
+            const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+            const dataPorExtenso = `${dia} de ${meses[mes - 1]} de ${ano}`;
+            document.getElementById('resultado').innerHTML = dataPorExtenso;
+        }
+    </script>
+</body>
+</html>

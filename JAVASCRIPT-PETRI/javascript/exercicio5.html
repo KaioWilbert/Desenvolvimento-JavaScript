@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>atividade05</title>
+</head>
+<body>
+    <h2>atividade05</h2>
+    <div id="inputs"></div>
+    <button onclick="calcular()">Calcular</button>
+    <div id="resultados"></div>
+
+    <script>
+       
+        function criarCampos() {
+            const container = document.getElementById('inputs');
+            for (let i = 0; i < 10; i++) {
+                container.innerHTML += `
+                    <label>Idade:</label>
+                    <input type="number" id="idade${i}">
+                    <label>Peso:</label>
+                    <input type="number" id="peso${i}">
+                    <label>Sexo (M/F):</label>
+                    <input type="text" id="sexo${i}">
+                    <br><br>
+                `;
+            }
+        }
+
+        function calcular() {
+            let totalHomens = 0;
+            let totalMulheres = 0;
+            let somaIdadesHomens = 0;
+            let somaPesosMulheres = 0;
+
+            for (let i = 0; i < 10; i++) {
+                const idade = parseFloat(document.getElementById(`idade${i}`).value);
+                const peso = parseFloat(document.getElementById(`peso${i}`).value);
+                const sexo = document.getElementById(`sexo${i}`).value.toUpperCase();
+
+                if (sexo === 'M') {
+                    totalHomens++;
+                    somaIdadesHomens += idade;
+                } else if (sexo === 'F') {
+                    totalMulheres++;
+                    somaPesosMulheres += peso;
+                }
+            }
+
+            const mediaIdadesHomens = totalHomens > 0 ? (somaIdadesHomens / totalHomens).toFixed(2) : 0;
+            const mediaPesosMulheres = totalMulheres > 0 ? (somaPesosMulheres / totalMulheres).toFixed(2) : 0;
+
+            const resultados = `
+                <p>Total de Homens: ${totalHomens}</p>
+                <p>Total de Mulheres: ${totalMulheres}</p>
+                <p>Média das Idades dos Homens: ${mediaIdadesHomens}</p>
+                <p>Média dos Pesos das Mulheres: ${mediaPesosMulheres}</p>
+            `;
+
+            document.getElementById('resultados').innerHTML = resultados;
+        }
+
+        window.onload = criarCampos;
+    </script>
+</body>
+</html>
